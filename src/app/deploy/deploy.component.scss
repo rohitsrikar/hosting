@@ -1,0 +1,216 @@
+.container {
+  margin-top: 9vh;
+  overflow-y: hidden; 
+}
+.buttons1 {
+    margin-top: 15px;
+    text-align: center;
+    border-radius:30px;
+  }
+  
+  $blue: #00a8eb;
+  $dark: #FFFFFF;
+  $borderW: 2px;
+
+svg{
+    z-index: -2;
+    position: absolute;
+  }
+  
+  .blob1-btn{
+    $numOfBlobs: 4;
+    z-index: 1;
+    position: relative;
+    padding: 10px 46px;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    color:  $blue;
+    font-size: 16px;
+    font-weight: bold;
+    background-color:  $blue !important;
+    outline: none;
+    border: none;
+    transition: color 0.5s;
+    cursor: pointer;
+    border-radius:30px;
+    
+    &:before {
+      content: "";
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border: $borderW solid $blue ;
+      border-radius:30px;
+    }
+    
+    &:after {
+      content: "";
+      z-index: -2;
+      position: absolute;
+      left: $borderW*1.5;
+      top: $borderW*1.5;
+      width: 100%;
+      height: 100%;
+  
+      transition: all 0.3s 0.2s;
+      border-radius:30px;
+    }
+    
+    &:hover {
+      color: $dark;
+      border-radius:30px;
+      
+      &:after {
+        transition: all 0.3s;
+        left: 0;
+        top: 0;
+        border-radius:30px;
+      }
+    }
+    
+    &__inner {
+      z-index: -1;
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius:30px;
+      background:#ffffff;
+    }
+    
+    // additional container created, because in FF blobs are breaking overflow:hidden of element with svg gooey filter
+    &__blobs1 {
+      position: relative;
+      display: block;
+      height: 100%;
+      filter: url('#goo');
+    }
+    
+    &__blob1 {
+      position: absolute;
+      top: $borderW;
+      width: 100% / $numOfBlobs;
+      height: 100%;
+      background: $blue ;
+      border-radius: 100%;
+      transform: translate3d(0,150%,0) scale(1.7);
+      transition: transform 0.45s;
+      
+      @supports(filter: url('#goo')) {
+        transform: translate3d(0,150%,0) scale(1.4);
+      }
+      
+      @for $i from 1 through $numOfBlobs {
+        &:nth-child(#{$i}) {
+          left: ($i - 1) * (120% / $numOfBlobs);
+          transition-delay: ($i - 1) * 0.08s;
+        }
+      }
+      
+      .blob1-btn:hover & {
+        transform: translateZ(0) scale(1.7);
+        
+        @supports(filter: url('#goo')) {
+          transform: translateZ(0) scale(1.4);
+        }
+      }
+    }
+  }
+
+ label{
+     color: $blue;
+ }
+
+ 
+//  .example-viewport {
+//   height: 200px;
+//   width: 200px;
+//   border: 1px solid black;
+// }
+
+// .example-dt {
+//   height: 30px;
+//   font-weight: bold;
+// }
+
+// .example-dd {
+//   height: 30px;
+// }
+cdk-virtual-scroll-viewport {
+  height: 57vh;
+  width: auto;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  
+
+  li {
+    height: auto;
+    margin: 20px;
+    padding: 10px;
+    background: whitesmoke;
+    border-radius: 10px;
+
+    box-shadow: 2px 2px 2px 2px rgba($color: #888888, $alpha: 0.2);
+  }
+
+  // Bonus points
+  &::-webkit-scrollbar {
+    margin-left: 30px;
+    float: left;
+    // height: 75px;
+    width: 10px;
+    background: #fff;
+    overflow-y: scroll;
+    margin-bottom: 25px;
+    .cdk-virtual-scroll-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            height:30px;
+        }
+    }
+    .force-overflow {
+    min-height: 450px;
+    }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 5px;
+    margin-top:10px;
+    
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(202, 193, 181);
+    border-radius: 10px;
+    
+  }
+}
+
+.animate__animated.animate__slideInRight {
+  --animate-duration: 2s;
+}
+
+// .gkz-viewport {
+//   height: 100px;
+//   width: 200px;
+//   border: 1px solid black;
+//   .cdk-virtual-scroll-content-wrapper {
+//       display: flex;
+//       flex-direction: column;
+//   }
+//   .item {
+//       height: 19px;
+//       border-bottom: 1px dashed #aaa;
+//   }
+// }
+

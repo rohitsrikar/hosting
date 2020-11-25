@@ -1,0 +1,50 @@
+.user{
+    width: 25rem;
+    margin:auto;
+    margin-top:7rem;
+    // margin-left: 7rem;
+}
+
+:host {
+    ::ng-deep {
+        .p-card {
+            .p-card-body {
+                padding: 0rem !important;
+            }
+
+            .p-card-content {
+                padding: 0rem !important;
+            }
+
+            box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+        }
+    }
+}
+
+
+
+// .p-card {
+//     background: #ffffff;
+//     color: #495057;
+//     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+//     border-radius: 3px;
+//   }
+//   .p-card .p-card-body {
+//     padding: 1rem;
+//   }
+//   .p-card .p-card-title {
+//     font-size: 1.5rem;
+//     font-weight: 700;
+//     margin-bottom: 0.5rem;
+//   }
+//   .p-card .p-card-subtitle {
+//     font-weight: 400;
+//     margin-bottom: 0.5rem;
+//     color: #6c757d;
+//   }
+//   .p-card .p-card-content {
+//     padding: 1rem 0;
+//   }
+//   .p-card .p-card-footer {
+//     padding: 1rem 0 0 0;
+//   }
